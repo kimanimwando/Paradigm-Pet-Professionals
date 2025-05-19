@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1440, initial-scale=1" />
+<title>Paradigm Pet Professionals</title>
+<style>
+  /* Colors from description */
+  :root {
+    --midnight-blue: #003366;
+    --blue-sky: #87CEEB;
+    --white: #fff;
+    --gray-light: #f4f4f4;
+    --gray-dark: #333;
+    --button-hover: #00509e;
+  }
+
+  /* Reset */
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: var(--white);
+    color: var(--gray-dark);
+  }
+
+  a {
+    text-decoration: none;
+    color: var(--midnight-blue);
+  }
+
+  a:hover {
+    color: var(--blue-sky);
+  }
+
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--midnight-blue);
+    padding: 10px 40px;
+    color: white;
+  }
+
+  /* Logo */
+  .logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--blue-sky);
+    letter-spacing: 1px;
+  }
+
+  /* Navigation menu */
+  nav {
+    flex-grow: 1;
+    margin-left: 40px;
+  }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+  }
+
+  nav ul li a {
+    color: white;
+    font-weight: 600;
+    padding: 8px 10px;
+    transition: background-color 0.3s, color 0.3s;
+    border-radius: 4px;
+  }
+
+  nav ul li a:hover {
+    background-color: var(--blue-sky);
+    color: var(--midnight-blue);
+  }
+
+  /* Search */
+  .search-container {
+    position: relative;
+  }
+
+  .search-container input[type="search"] {
+    padding: 6px 10px;
+    border-radius: 4px;
+    border: none;
+    font-size: 1rem;
+    width: 180px;
+  }
+
+  /* Hero Section */
+  .hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 400px;
+    background-color: var(--gray-light);
+    position: relative;
+    text-align: center;
+    padding: 0 40px;
+    background-image: url('https://via.placeholder.com/1200x400?text=Hero+Image+Placeholder');
+    background-size: cover;
+    background-position: center;
+    color: white;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(0, 51, 102, 0.65);
+  }
+
+  .hero-content {
+    position: relative;
+    max-width: 800px;
+    z-index: 1;
+  }
+
+  .hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+  }
+
+  .hero-content p {
+    font-size: 1.25rem;
+    margin-bottom: 20px;
+  }
+
+  .btn-primary {
+    background-color: var(--blue-sky);
+    border: none;
+    padding: 14px 30px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: var(--midnight-blue);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .btn-primary:hover {
+    background-color: var(--button-hover);
+    color: white;
+  }
+
+  /* Services Section */
+  .services {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin: 40px auto;
+    max-width: 1200px;
+    padding: 0 40px;
+  }
+
+  .service-block {
+    background: var(--gray-light);
+    border-radius: 8px;
+    flex: 1;
+    padding: 20px;
+    text-align: center;
+    transition: box-shadow 0.3s;
+    cursor: pointer;
+  }
+
+  .service-block:hover {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  }
+
+  .service-block img {
+    width: 100%;
+    max-height: 150px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-bottom: 15px;
+  }
+
+  .service-block h3 {
+    margin: 0 0 10px;
+    color: var(--midnight-blue);
+  }
+
+  /* Pet Personas Section */
+  .pet-personas {
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 0 40px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+  }
+
+  .pet-persona {
+    background: var(--gray-light);
+    border-radius: 8px;
+    padding: 15px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s;
+  }
+
+  .pet-persona:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 20px rgba(0, 51, 102, 0.3);
+  }
+
+  .pet-persona img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    margin-bottom: 10px;
+  }
+
+  .pet-persona p {
+    margin: 0;
+    font-weight: 600;
+    color: var(--midnight-blue);
+  }
+
+  /* Contact Form Section */
+  .contact-section {
+    background-color: var(--midnight-blue);
+    color: white;
+    padding: 50px 40px;
+    max-width: 1200px;
+    margin: 60px auto 40px auto;
+    border-radius: 10px;
+  }
+
+  .contact-section h2 {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  form {
+    max-width: 800px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px 30px;
+  }
+
+  form label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+  }
+
+  form input, form select {
+    padding: 10px;
+    border-radius: 6px;
+    border: none;
+    font-size: 1rem;
+  }
+
+  form input[type="submit"] {
+    grid-column: 1 / -1;
+    background-color: var(--blue-sky);
+    color: var(--midnight-blue);
+    font-weight: bold;
+    font-size: 1.1rem;
+    cursor: pointer;
+    border: none;
+    border-radius: 6px;
+    padding: 14px 0;
+    transition: background-color 0.3s;
+  }
+
+  form input[type="submit"]:hover {
+    background-color: var(--button-hover);
+    color: white;
+  }
+
+  /* Footer */
+  footer {
+    background-color: var(--midnight-blue);
+    color: white;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .footer-nav ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+    margin: 0;
+    padding: 0;
+  }
+
+  .footer-nav ul li a {
+    color: var(--blue-sky);
+    font-weight: 600;
+  }
+
+  .footer-nav ul li a:hover {
+    text-decoration: underline;
+  }
+
+  .social-links a {
+    color: var(--blue-sky);
+    margin-left: 15px;
+    font-size: 1.3rem;
+  }
+
+  .social-links a:hover {
+    color: var(--button-hover);
+  }
+
+  @media (max-width: 1200px) {
+    nav ul {
+      gap: 15px;
+    }
+    .services {
+      flex-direction: column;
+      max-width: 90%;
+    }
+    .pet-personas {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+    }
+    form {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">Paradigm Pet Professionals</div>
+  <nav>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Cats</a></li>
+      <li><a href="#">Dogs</a></li>
+      <li><a href="#">Birds</a></li>
+      <li><a href="#">Fish</a></li>
+      <li><a href="#">Small Animals</a></li>
+    </ul>
+  </nav>
+  <div class="search-container">
+    <input type="search" placeholder="Search..." aria-label="Search site content" />
+  </div>
+</header>
+
+<section class="hero" role="banner" aria-label="Main hero image with mission statement">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1>Empowering Pet Owners with Evidence-Based Care</h1>
+    <p>Your trusted resource for expert advice and personalized consultations for cats, dogs, birds, fish, and small animals.</p>
+    <button class="btn-primary" aria-label="Request a Consultation">Request a Consultation</button>
+  </div>
+</section>
+
+<section class="services" aria-label="Main services">
+  <div class="service-block" tabindex="0">
+    <img src="https://via.placeholder.com/300x150?text=Evidence-Based+Advice" alt="Evidence-based pet advice" />
+    <h3>Evidence-Based Pet Advice</h3>
+    <p>Reliable, up-to-date information tailored for your pet’s unique needs.</p>
+  </div>
+  <div class="service-block" tabindex="0">
+    <img src="https://via.placeholder.com/300x150?text=Personalized+Consultations" alt="Personalized pet consultations" />
+    <h3>Personalized Consultations</h3>
+    <p>Connect with our experts for customized care plans and support.</p>
+  </div>
+  <div class="service-block" tabindex="0">
+    <img src="https://via.placeholder.com/300x150?text=Community+Support" alt="Community support for pet owners" />
+    <h3>Community Support</h3>
+    <p>Join a community of pet lovers sharing knowledge and experiences.</p>
+  </div>
+</section>
+
+<section class="pet-personas" aria-label="Pet personas">
+  <div class="pet-persona" tabindex="0">
+    <img src="https://via.placeholder.com/80?text=Cats" alt="Cat icon" />
+    <p>Cats</p>
+  </div>
+  <div class="pet-persona" tabindex="0">
+    <img src="https://via.placeholder.com/80?text=Dogs" alt="Dog icon" />
+    <p>Dogs</p>
+  </div>
+  <div class="pet-persona" tabindex="0">
+    <img src="https://via.placeholder.com/80?text=Birds" alt="Bird icon" />
+    <p>Birds</p>
+  </div>
+  <div class="pet-persona" tabindex="0">
+    <img src="https://via.placeholder.com/80?text=Fish" alt="Fish icon" />
+    <p>Fish</p>
+  </div>
+  <div class="pet-persona" tabindex="0">
+    <img src="https://via.placeholder.com/80?text=Small+Animals" alt="Small animals icon" />
+    <p>Small Animals</p>
+  </div>
+</section>
+
+<section class="contact-section" aria-label="Contact form to request a consultation">
+  <h2>Request a Consultation</h2>
+  <form action="#" method="post" novalidate>
+    <label for="name">Name</label>
+    <input type="text" id="name" name="name" placeholder="Your full name" required />
+
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" placeholder="you@example.com" required />
+
+    <label for="phone">Phone Number</label>
+    <input type="tel" id="phone" name="phone" placeholder="123-456-7890" />
+
+    <label for="timezone">Time Zone</label>
+    <select id="timezone" name="timezone" required>
+      <option value="" disabled selected>Select your time zone</option>
+      <option value="UTC-12">UTC-12</option>
+      <option value="UTC-11">UTC-11</option>
+      <option value="UTC-10">UTC-10</option>
+      <option value="UTC-9">UTC-9</option>
+      <option value="UTC-8">UTC-8</option>
+      <option value="UTC-7">UTC-7</option>
+      <option value="UTC-6">UTC-6</option>
+      <option value="UTC-5">UTC-5</option>
+      <option value="UTC-4">UTC-4</option>
+      <option value="UTC-3">UTC-3</option>
+      <option value="UTC-2">UTC-2</option>
+      <option value="UTC-1">UTC-1</option>
+      <option value="UTC+0">UTC+0</option>
+      <option value="UTC+1">UTC+1</option>
+      <option value="UTC+2">UTC+2</option>
+      <option value="UTC+3">UTC+3</option>
+      <option value="UTC+4">UTC+4</option>
+      <option value="UTC+5">UTC+5</option>
+      <option value="UTC+6">UTC+6</option>
+      <option value="UTC+7">UTC+7</option>
+      <option value="UTC+8">UTC+8</option>
+      <option value="UTC+9">UTC+9</option>
+      <option value="UTC+10">UTC+10</option>
+      <option value="UTC+11">UTC+11</option>
+      <option value="UTC+12">UTC+12</option>
+    </select>
+
+    <label for="petname">Pet Name</label>
+    <input type="text" id="petname" name="petname" placeholder="Your pet's name" />
+
+    <label for="pettype">Pet Type</label>
+    <select id="pettype" name="pettype">
+      <option value="" disabled selected>Select pet type</option>
+      <option value="cat">Cat</option>
+      <option value="dog">Dog</option>
+      <option value="bird">Bird</option>
+      <option value="fish">Fish</option>
+      <option value="small-animal">Small Animal</option>
+    </select>
+
+    <label for="petage">Pet Age</label>
+    <input type="number" id="petage" name="petage" min="0" max="100" placeholder="Pet's age in years" />
+
+    <input type="submit" value="Submit Request" />
+  </form>
+</section>
+
+<footer>
+  <nav class="footer-nav" aria-label="Secondary navigation">
+    <ul>
+      <li><a href="#">Privacy Policy</a></li>
+      <li><a href="#">Terms of Service</a></li>
+      <li><a href="#">Contact Us</a></li>
+    </ul>
+  </nav>
+  <div class="social-links" aria-label="Social media links">
+    <a href="#" aria-label="Facebook" title="Facebook" target="_blank" rel="noopener noreferrer">🔵</a>
+    <a href="#" aria-label="Twitter" title="Twitter" target="_blank" rel="noopener noreferrer">🐦</a>
+    <a href="#" aria-label="Instagram" title="Instagram" target="_blank" rel="noopener noreferrer">📸</a>
+  </div>
+</footer>
+
+</body>
+</html>
