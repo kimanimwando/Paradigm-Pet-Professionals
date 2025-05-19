@@ -1,0 +1,1 @@
+A great deal of the material is rudimentary, high-level advice on pet care that is not detailed or specific for the unique pet owner types, including bird owners, fish owners, or owners of small animals, that constitute emerging target groups.
